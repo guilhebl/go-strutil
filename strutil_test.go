@@ -38,3 +38,14 @@ var post_notif_widget_ajax_obj = {"ajax_url":"http:\/\/site.com\/wp-admin\/admin
 		t.Error("Error while filtering HTML string")
 	}
 }
+
+func TestTrimSuffix(t *testing.T) {
+
+	s := "tree+abc+def+gef+"
+
+	s = TrimSuffix(s, "+")
+
+	if s != "tree+abc+def+gef" {
+		t.Errorf("Incorrect trimmed suffix for %s", s)
+	}
+}
