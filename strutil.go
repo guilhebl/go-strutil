@@ -34,7 +34,6 @@ loopDomTest:
 	return buffer.String()
 }
 
-
 // Trims the suffix of a tree example : INPUT "tree+" AND SUFFIX "+" OUTPUT: "tree"
 func TrimSuffix(s, suffix string) string {
 	if strings.HasSuffix(s, suffix) {
