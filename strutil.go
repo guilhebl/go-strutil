@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"golang.org/x/net/html"
 	"strings"
+	"fmt"
 )
 
 // Filters out all HTML tags from given string
@@ -40,4 +41,24 @@ func TrimSuffix(s, suffix string) string {
 		s = s[:len(s)-len(suffix)]
 	}
 	return s
+}
+
+// builds a string formed by the elements of the array of strings using separator
+func MakeString(strings []string) string {
+	return CombineStrings(strings, "")
+}
+
+// combine strings of array to a unique string split by separator
+func CombineStrings(strings []string, separator string) string {
+	if strings == nil || len(strings) == 0 {
+		return ""
+	}
+
+	var buffer bytes.Buffer
+
+	for i := 0; i < len(strings); i++ {
+		buffer.WriteString(fmt.Sprintf("%s%s", strings[i], separator))
+	}
+
+	return TrimSuffix(buffer.String(), separator)
 }
