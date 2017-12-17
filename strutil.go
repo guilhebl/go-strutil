@@ -2,9 +2,9 @@ package strutil
 
 import (
 	"bytes"
+	"fmt"
 	"golang.org/x/net/html"
 	"strings"
-	"fmt"
 )
 
 // Filters out all HTML tags from given string

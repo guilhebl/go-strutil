@@ -1,8 +1,8 @@
 package strutil
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 // Tests filtering a text with HTML
@@ -17,7 +17,7 @@ var post_notif_widget_ajax_obj = {"ajax_url":"http:\/\/site.com\/wp-admin\/admin
 </script>`
 
 	text1 := FilterHtmlTags(s)
-	assert.Equal(t , "Links:FooBarBazTEXTIWANT", text1)
+	assert.Equal(t, "Links:FooBarBazTEXTIWANT", text1)
 
 	s2 := `
 	<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
@@ -33,47 +33,47 @@ var post_notif_widget_ajax_obj = {"ajax_url":"http:\/\/site.com\/wp-admin\/admin
 	</HTML>`
 	text2 := FilterHtmlTags(s2)
 
-	assert.Equal(t , "A Small HelloHiThis is very minimal \"hello world\" HTML document.content", text2)
+	assert.Equal(t, "A Small HelloHiThis is very minimal \"hello world\" HTML document.content", text2)
 }
 
 // test filtering a text with no HTML tags
 func TestFilterHtmlNoTags(t *testing.T) {
 	s := "This is a simple test 1234567890 with no tags!"
 	text := FilterHtmlTags(s)
-	assert.Equal(t , s, text)
+	assert.Equal(t, s, text)
 }
 
 // test trimming a last char suffix
 func TestTrimSuffix(t *testing.T) {
 	s := "tree+abc+def+gef+"
 	text := TrimSuffix(s, "+")
-	assert.Equal(t , "tree+abc+def+gef", text)
+	assert.Equal(t, "tree+abc+def+gef", text)
 }
 
 // test trimming a last char empty suffix expect no change
 func TestTrimSuffixEmptySuffix(t *testing.T) {
 	s := "tree+abc+def+gef+"
 	text := TrimSuffix(s, "")
-	assert.Equal(t , s, text)
+	assert.Equal(t, s, text)
 }
 
 // test trimming a last char sequence suffix
 func TestTrimSuffixCharSequence(t *testing.T) {
 	s := "tree+abc+def+gef+"
 	text := TrimSuffix(s, "+def+gef+")
-	assert.Equal(t , "tree+abc", text)
+	assert.Equal(t, "tree+abc", text)
 }
 
 // test Combining String array with separator
 func TestCombineStrings(t *testing.T) {
 	strings := []string{"orange", "apple", "banana", "grape"}
 	s := CombineStrings(strings, "-")
-	assert.Equal(t , "orange-apple-banana-grape", s)
+	assert.Equal(t, "orange-apple-banana-grape", s)
 }
 
 // test MakeString using array with blank separator
 func TestMakeString(t *testing.T) {
 	strings := []string{"orange", "apple", "banana", "grape"}
 	s := MakeString(strings)
-	assert.Equal(t , "orangeapplebananagrape", s)
+	assert.Equal(t, "orangeapplebananagrape", s)
 }
