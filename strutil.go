@@ -2,7 +2,6 @@ package strutil
 
 import (
 	"bytes"
-	"fmt"
 	"golang.org/x/net/html"
 	"strings"
 )
@@ -33,32 +32,4 @@ loopDomTest:
 	}
 
 	return buffer.String()
-}
-
-// Trims the suffix of a tree example : INPUT "tree+" AND SUFFIX "+" OUTPUT: "tree"
-func TrimSuffix(s, suffix string) string {
-	if strings.HasSuffix(s, suffix) {
-		s = s[:len(s)-len(suffix)]
-	}
-	return s
-}
-
-// builds a string formed by the elements of the array of strings using separator
-func MakeString(strings []string) string {
-	return CombineStrings(strings, "")
-}
-
-// combine strings of array to a unique string split by separator
-func CombineStrings(strings []string, separator string) string {
-	if strings == nil || len(strings) == 0 {
-		return ""
-	}
-
-	var buffer bytes.Buffer
-
-	for i := 0; i < len(strings); i++ {
-		buffer.WriteString(fmt.Sprintf("%s%s", strings[i], separator))
-	}
-
-	return TrimSuffix(buffer.String(), separator)
 }

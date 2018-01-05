@@ -42,38 +42,3 @@ func TestFilterHtmlNoTags(t *testing.T) {
 	text := FilterHtmlTags(s)
 	assert.Equal(t, s, text)
 }
-
-// test trimming a last char suffix
-func TestTrimSuffix(t *testing.T) {
-	s := "tree+abc+def+gef+"
-	text := TrimSuffix(s, "+")
-	assert.Equal(t, "tree+abc+def+gef", text)
-}
-
-// test trimming a last char empty suffix expect no change
-func TestTrimSuffixEmptySuffix(t *testing.T) {
-	s := "tree+abc+def+gef+"
-	text := TrimSuffix(s, "")
-	assert.Equal(t, s, text)
-}
-
-// test trimming a last char sequence suffix
-func TestTrimSuffixCharSequence(t *testing.T) {
-	s := "tree+abc+def+gef+"
-	text := TrimSuffix(s, "+def+gef+")
-	assert.Equal(t, "tree+abc", text)
-}
-
-// test Combining String array with separator
-func TestCombineStrings(t *testing.T) {
-	strings := []string{"orange", "apple", "banana", "grape"}
-	s := CombineStrings(strings, "-")
-	assert.Equal(t, "orange-apple-banana-grape", s)
-}
-
-// test MakeString using array with blank separator
-func TestMakeString(t *testing.T) {
-	strings := []string{"orange", "apple", "banana", "grape"}
-	s := MakeString(strings)
-	assert.Equal(t, "orangeapplebananagrape", s)
-}
